@@ -21,6 +21,8 @@ Graph-Builder/
 ├── requirements.txt       # Python dependencies
 ├── .gitignore            # Git ignore rules
 ├── README.md             # This file
+├── .github/
+│   └── workflows/        # CI/CD workflows
 └── src/
     ├── graph_manager.py  # NetworkX graph operations
     └── ui_components.py  # Reusable Streamlit UI elements
@@ -60,11 +62,11 @@ The app will open in your default browser. Use the sidebar to:
 - Visualize the graph in real-time
 - Save/load graphs
 
-## Dependencies
+## Tech Stack
 
-- **streamlit** - Web app framework
-- **networkx** - Graph data structure and algorithms
-- **plotly** - Interactive visualizations
+- **Streamlit** - Web app framework
+- **NetworkX** - Graph data structure and algorithms
+- **Plotly** - Interactive visualizations
 
 See `requirements.txt` for specific versions.
 
@@ -76,6 +78,33 @@ See `requirements.txt` for specific versions.
 4. Add properties to nodes and edges as needed
 5. Visualize your graph in the main display area
 6. Save your work using the export functionality
+
+## API Reference
+
+### GraphManager Class
+
+```python
+from src.graph_manager import GraphManager
+
+gm = GraphManager()
+
+# Create graph
+gm.create_graph(directed=True)
+
+# Node operations
+gm.add_node(label, properties={})
+gm.update_node(label, properties={})
+gm.delete_node(label)
+
+# Edge operations
+gm.add_edge(source, target, label="", properties={})
+gm.update_edge(source, target, label="", properties={})
+gm.delete_edge(source, target)
+
+# Persistence
+gm.save_graph(filename)
+gm.load_graph(filename)
+```
 
 ## Future Enhancements
 
